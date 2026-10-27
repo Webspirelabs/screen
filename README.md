@@ -1,6 +1,8 @@
 # Clearview — consent-first screen sharing
 
-Clearview is a MERN application for real-time, browser-based support sessions. Screen capture is initiated by the sharing user, requires the browser's native `getDisplayMedia` permission prompt, and has an always-visible in-page stop control. The application does not record screen content or capture input.
+Rang & Utsav is the public festival experience in this MERN application. The public home page is a festival promotion. A separate `/share` page contains the clearly disclosed, user-initiated support-sharing workflow; it requires the browser's native `getDisplayMedia` permission prompt and has an always-visible stop control. The application does not record screen content or capture input. Administrator access remains on `/admin/login`.
+
+The festival name, dates, city, and programme shown in the sample homepage are editable demonstration content and should be replaced with confirmed event details before publication.
 
 ## Requirements
 

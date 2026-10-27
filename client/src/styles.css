@@ -275,3 +275,264 @@ footer > span { color: #8a9694; font-size: 10px; }
   .viewer-heading { align-items: flex-start; gap: 12px; }
   .viewer-heading .button { min-height: 34px; padding: 0 9px; font-size: 9px; }
 }
+
+.festival-page {
+  --fest-ink: #271a2d;
+  --fest-muted: #746b70;
+  --fest-red: #c94035;
+  --fest-orange: #ed8b2f;
+  --fest-pink: #ed6982;
+  --fest-yellow: #f3c64e;
+  --fest-green: #4a7561;
+  --fest-cream: #fff9ef;
+  color: var(--fest-ink);
+  background: var(--fest-cream);
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+.festival-page main { overflow: hidden; }
+.festival-ribbon {
+  min-height: 34px; padding: 7px 16px; display: flex; justify-content: center; align-items: center; gap: 12px;
+  color: #fff8e9; background: #422b40; font-size: 9px; font-weight: 700; letter-spacing: 1.15px; text-align: center;
+}
+.festival-ribbon svg { color: #f2c55c; }
+.festival-header {
+  position: relative; z-index: 5; max-width: 1240px; height: 83px; margin: auto; padding: 0 42px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.festival-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--fest-ink); font: 800 20px/1 'Manrope', 'Segoe UI', sans-serif; letter-spacing: -1px; }
+.festival-brand > span:last-child { display: flex; flex-direction: column; }
+.festival-brand small { margin-top: 5px; color: #958581; font: 700 7px 'DM Sans', 'Segoe UI', sans-serif; letter-spacing: 1.5px; }
+.festival-brand-mark { width: 36px; height: 36px; display: grid; place-items: center; color: white; background: var(--fest-red); border-radius: 50%; }
+.brand-amp { color: var(--fest-orange); }
+.festival-nav { display: flex; align-items: center; gap: 31px; color: #63565c; font-size: 11px; font-weight: 600; }
+.festival-nav > a:not(.festival-nav-cta):hover, .festival-text-link:hover { color: var(--fest-red); }
+.festival-nav a { transition: color .2s ease, background .2s ease; }
+.festival-nav .festival-nav-cta { min-height: 41px; padding: 0 16px; display: inline-flex; align-items: center; gap: 10px; color: white; background: var(--fest-red); border-radius: 5px; }
+.festival-nav .festival-nav-cta:hover { background: #a92d29; }
+.festival-menu-toggle { display: none; }
+.festival-hero {
+  position: relative; max-width: 1240px; min-height: 605px; margin: auto; padding: 25px 42px 62px;
+  display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 14px;
+}
+.hero-sunburst { position: absolute; z-index: 0; top: 14%; right: 12%; width: 112px; aspect-ratio: 1; pointer-events: none; opacity: .42; background: repeating-conic-gradient(from 4deg, #edb54b00 0deg 8deg, #edb54b36 8deg 10deg); border: 1px solid #d88a5036; border-radius: 50%; }
+.hero-sunburst::before { position: absolute; inset: 18px; content: ''; border: 1px solid #d88a5048; border-radius: 50%; }
+.hero-sunburst::after { position: absolute; inset: 37px; content: ''; background: #e8ad4c33; border-radius: 50%; }
+.sunburst-core { position: absolute; inset: 0; display: grid; place-items: center; color: #a64c3c; }
+.sunburst-core span { position: absolute; top: 41px; font: 800 17px Georgia, serif; }
+.sunburst-core i { position: absolute; top: 58px; color: #d98744; font-size: 15px; font-style: normal; }
+.festival-hero-copy { position: relative; z-index: 2; padding: 14px 0 20px 8px; }
+.festival-hero-copy > * { animation: festival-reveal .65s both; }
+.festival-hero-copy > :nth-child(2) { animation-delay: .08s; }
+.festival-hero-copy > :nth-child(3) { animation-delay: .14s; }
+.festival-hero-copy > :nth-child(4) { animation-delay: .2s; }
+.festival-hero-copy > :nth-child(5) { animation-delay: .26s; }
+.festival-kicker { display: flex; align-items: center; gap: 9px; color: #9c5844; font-size: 9px; font-weight: 800; letter-spacing: 1.7px; }
+.festival-kicker > span { width: 20px; height: 2px; background: var(--fest-orange); }
+.festival-hero h1 {
+  margin: 20px 0 17px; color: var(--fest-ink); font: 800 clamp(52px, 6.3vw, 78px)/.99 'Manrope', 'Segoe UI', sans-serif;
+  letter-spacing: -5.3px;
+}
+.festival-hero h1 em, .festival-section-heading h2 em, .visit-copy h2 em, .festival-pass-banner h2 em, .festival-faq h2 em, .sharing-main h1 em {
+  color: var(--fest-red); font-style: normal;
+}
+.festival-hero-copy > p { max-width: 390px; margin: 0; color: var(--fest-muted); font-size: 13px; line-height: 1.85; }
+.festival-hero-actions { display: flex; align-items: center; gap: 23px; margin-top: 27px; }
+.festival-button { min-height: 47px; padding: 0 17px; display: inline-flex; justify-content: center; align-items: center; gap: 10px; border-radius: 5px; font-size: 10px; font-weight: 700; transition: transform .2s ease, background .2s ease; }
+.festival-button:hover { transform: translateY(-2px); }
+.festival-button-dark { color: #fff; background: var(--fest-ink); }
+.festival-button-dark:hover { background: #4b3150; }
+.festival-play-link { display: inline-flex; align-items: center; gap: 8px; color: #5f5256; font-size: 10px; font-weight: 700; }
+.festival-play-link > span { width: 27px; height: 27px; display: grid; place-items: center; color: var(--fest-red); border: 1px solid #e8c9b8; border-radius: 50%; }
+.festival-hero-meta { margin-top: 32px; display: flex; align-items: center; gap: 13px; color: #71676a; font-size: 10px; }
+.festival-hero-meta span { display: flex; align-items: center; gap: 7px; }
+.festival-hero-meta svg { color: var(--fest-red); }
+.festival-hero-meta > i { width: 3px; height: 3px; background: #cb9780; border-radius: 50%; }
+.festival-hero-art {
+  position: relative; min-height: 485px; overflow: hidden; isolation: isolate; border-radius: 48% 48% 8px 8px;
+  background:
+    radial-gradient(ellipse at 51% 65%, #faad51 0 8%, transparent 8.3%),
+    radial-gradient(ellipse at 50% 70%, #e96342 0 22%, transparent 22.4%),
+    radial-gradient(ellipse at 52% 72%, #d54d40 0 36%, transparent 36.3%),
+    linear-gradient(160deg, #765176 0%, #bd5364 34%, #ed8f4b 75%, #f6c469 100%);
+  box-shadow: 0 25px 55px #79433a20; animation: festival-art-arrive .85s .1s both;
+}
+.festival-hero-art::before { position: absolute; z-index: -1; inset: 0; content: ''; opacity: .35; background: radial-gradient(circle at 50% 52%, transparent 0 22%, #ffe1a44c 22.2% 22.5%, transparent 22.8% 32%, #ffe1a444 32.2% 32.5%, transparent 32.8%); }
+.festival-hero-art::after { position: absolute; z-index: 3; right: 0; bottom: 0; left: 0; height: 27%; content: ''; background: linear-gradient(0deg, #452e40c9, transparent); }
+.art-glow { position: absolute; top: 17%; left: 23%; width: 54%; aspect-ratio: 1; background: #ffd98e33; border-radius: 50%; filter: blur(35px); }
+.art-moon { position: absolute; top: 11%; left: 50%; color: #ffe6a5; font-size: 32px; transform: translateX(-50%); }
+.art-garland { position: absolute; z-index: 4; top: 0; right: 5%; left: 5%; height: 24%; display: flex; justify-content: space-around; border-top: 1px solid #f5d69c99; border-radius: 0 0 50% 50%; }
+.art-garland span { width: 8px; height: 8px; margin-top: 22px; background: #ffda7c; border-radius: 50%; box-shadow: 0 0 16px 5px #ffe4a38c; animation: festival-lantern 2.4s ease-in-out infinite alternate; }
+.art-garland span:nth-child(2n) { margin-top: 43px; }
+.art-garland span:nth-child(3n) { animation-delay: .7s; }.art-garland span:nth-child(4n) { animation-delay: 1.2s; }
+.art-stage { position: absolute; z-index: 2; right: 10%; bottom: 15%; left: 10%; height: 49%; }
+.stage-sun { position: absolute; top: 3%; left: 50%; width: 35%; aspect-ratio: 1; background: #ffcf69; border: 6px solid #ffe3a2aa; border-radius: 50%; box-shadow: 0 0 60px #ffd376a6; transform: translateX(-50%); }
+.stage-arch { position: absolute; right: 9%; bottom: 5%; left: 9%; height: 78%; border: 9px solid #743c55; border-bottom: 0; border-radius: 48% 48% 0 0; box-shadow: inset 12px 0 #f6bf66, inset -12px 0 #e7704d; }
+.stage-light { position: absolute; z-index: 2; top: 46%; width: 8px; height: 8px; background: #ffeab7; border-radius: 50%; box-shadow: 0 0 17px 7px #ffe5a993; }
+.light-a { left: 21%; }.light-b { right: 21%; }
+.stage-floor { position: absolute; z-index: 3; right: 2%; bottom: 0; left: 2%; height: 18%; background: linear-gradient(180deg, #5e374c, #422c44); clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%); }
+.stage-person { position: absolute; z-index: 4; bottom: 8%; width: 21px; height: 69px; background: #3f2a40; border-radius: 45% 45% 4px 4px; transform-origin: bottom; }
+.stage-person::before { position: absolute; top: -18px; left: 4px; width: 14px; height: 14px; content: ''; background: #3f2a40; border-radius: 50%; }
+.person-a { left: 39%; transform: rotate(12deg); }.person-b { left: 51%; height: 79px; transform: rotate(-9deg); }.person-c { left: 63%; height: 58px; transform: rotate(15deg); }
+.art-flower { position: absolute; z-index: 5; color: #ffd782; text-shadow: 0 1px 14px #ffe3a066; }
+.flower-a { top: 28%; left: 12%; font-size: 36px; }.flower-b { top: 40%; right: 12%; color: #f3a5a4; font-size: 43px; }.flower-c { right: 25%; bottom: 18%; color: #fff0c0; font-size: 20px; }
+.art-caption { position: absolute; z-index: 5; bottom: 8%; left: 8%; display: flex; flex-direction: column; gap: 7px; color: white; }
+.art-caption span, .art-caption i { font-size: 7px; font-style: normal; letter-spacing: 1.5px; }
+.art-caption b { font: 700 20px/1.1 'Manrope', 'Segoe UI', sans-serif; }
+.art-caption i { color: #f6c97f; }
+.art-side-note { position: absolute; z-index: 5; top: 49%; right: 2%; color: #fff4dc; font-size: 7px; font-weight: 700; letter-spacing: 1.2px; writing-mode: vertical-rl; }
+.hero-edge-label { position: absolute; right: 7px; bottom: 14%; color: #a68870; font-size: 7px; font-weight: 800; letter-spacing: 2px; writing-mode: vertical-rl; }
+.festival-facts { max-width: 1160px; min-height: 96px; margin: 0 auto; padding: 17px 25px; display: flex; justify-content: space-between; align-items: center; gap: 18px; background: white; border: 1px solid #f1e8dd; box-shadow: 0 12px 36px #613f2d0b; }
+.facts-label { color: #a5684e; font-size: 8px; font-weight: 800; letter-spacing: 1.3px; }
+.festival-facts > div { display: flex; align-items: center; gap: 10px; color: var(--fest-ink); font-size: 10px; font-weight: 700; }
+.festival-facts > div > svg { width: 18px; color: var(--fest-red); }
+.festival-facts > div span { display: flex; flex-direction: column; gap: 4px; }
+.festival-facts small { color: #9b8f89; font-size: 7px; letter-spacing: 1.1px; }
+.festival-facts > a { display: inline-flex; align-items: center; gap: 7px; color: var(--fest-red); font-size: 9px; font-weight: 800; }
+.festival-intro { max-width: 1160px; margin: auto; padding: 133px 25px 47px; display: grid; grid-template-columns: .7fr 1.15fr 1fr; align-items: center; gap: 35px; }
+.intro-side-note { display: flex; align-items: center; gap: 8px; color: #ad765d; font-size: 7px; font-weight: 800; letter-spacing: 1.3px; writing-mode: vertical-rl; transform: rotate(180deg); }
+.intro-side-note span { color: var(--fest-orange); font-size: 20px; }
+.festival-section-heading h2, .visit-copy h2, .festival-faq h2 { margin: 18px 0 0; font: 800 47px/1.02 'Manrope', 'Segoe UI', sans-serif; letter-spacing: -2.7px; }
+.festival-intro-copy > p { margin: 0; color: var(--fest-muted); font-size: 12px; line-height: 1.9; }
+.festival-text-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; color: #a44034; font-size: 10px; font-weight: 800; transition: color .2s; }
+.festival-experiences { max-width: 1160px; margin: auto; padding: 20px 25px 115px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.experience-card { position: relative; min-height: 335px; padding: 18px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #f0e5d9; background: white; transition: transform .25s ease, box-shadow .25s ease; }
+.experience-card:hover { transform: translateY(-5px); box-shadow: 0 16px 35px #49302412; }
+.experience-card-top { display: flex; justify-content: space-between; align-items: center; color: #947a69; }
+.experience-card-top span { font-size: 8px; font-weight: 800; letter-spacing: 1.3px; }
+.experience-card-top svg { width: 17px; color: var(--fest-red); }
+.experience-illustration { position: relative; height: 143px; margin: 8px -18px; overflow: hidden; }
+.music-illustration { background: #533c54; }
+.music-illustration::before, .music-illustration::after { position: absolute; top: 0; bottom: 0; width: 32%; content: ''; background: repeating-linear-gradient(90deg, transparent 0 14px, #ffffff12 15px 16px); }
+.music-illustration::after { right: 0; }
+.music-disc { position: absolute; top: 50%; left: 50%; width: 98px; height: 98px; background: repeating-radial-gradient(circle, #f8c56d 0 3px, #d85d54 4px 8px, #4a354f 9px 13px); border: 5px solid #f5d79a; border-radius: 50%; transform: translate(-50%, -50%); }
+.music-disc::after { position: absolute; inset: 41%; content: ''; background: #fff4d4; border-radius: 50%; }
+.music-wave { position: absolute; top: 18%; width: 3px; height: 70%; background: #ffdb88; border-radius: 3px; transform: rotate(24deg); }
+.wave-one { left: 24%; }.wave-two { left: 34%; height: 45%; top: 34%; }.wave-three { right: 24%; height: 54%; top: 26%; }
+.music-illustration > span { position: absolute; top: 14%; right: 15%; color: #fff1b7; font: 700 28px Georgia, serif; }
+.colour-illustration { background: #fae7d6; }
+.colour-ring { position: absolute; top: 50%; left: 50%; border: 9px dotted; border-radius: 50%; transform: translate(-50%, -50%); }
+.ring-one { width: 128px; height: 128px; color: #e56051; }.ring-two { width: 93px; height: 93px; color: #eaa63c; transform: translate(-50%, -50%) rotate(18deg); }.ring-three { width: 55px; height: 55px; color: #628a6c; transform: translate(-50%, -50%) rotate(36deg); }
+.colour-center { position: absolute; top: 50%; left: 50%; color: #4c394b; font: 800 18px Georgia, serif; transform: translate(-50%, -50%); }
+.colour-dot { position: absolute; width: 12px; height: 12px; background: #ef846a; border-radius: 50%; }.dot-one { top: 22%; left: 25%; }.dot-two { right: 23%; bottom: 20%; background: #6e9577; }.dot-three { top: 27%; right: 30%; width: 7px; height: 7px; background: #efb843; }
+.taste-illustration { background: #e99b65; }
+.taste-sun { position: absolute; top: -45px; right: -15px; width: 160px; height: 160px; background: #f7c66d; border-radius: 50%; }
+.taste-plate { position: absolute; top: 50%; left: 43%; width: 116px; height: 116px; display: flex; justify-content: center; align-items: center; gap: 5px; background: #fff5dc; border: 8px solid #d56c4e; border-radius: 50%; box-shadow: 0 8px 15px #793f3244; transform: translate(-50%, -50%); }
+.taste-plate i { width: 12px; height: 42px; background: #6d8d64; border-radius: 50%; transform: rotate(34deg); }.taste-plate i:nth-child(2n) { background: #e3a739; transform: rotate(-32deg); }.taste-plate i:nth-child(3) { background: #bd5147; }
+.taste-illustration > span { position: absolute; right: 9%; bottom: 16%; color: #fff7dd; font-size: 7px; font-weight: 800; letter-spacing: 1.2px; line-height: 1.7; }
+.experience-card h3 { margin: 3px 0 6px; font: 800 19px 'Manrope', 'Segoe UI', sans-serif; letter-spacing: -.6px; }
+.experience-card p { max-width: 265px; margin: 0; color: var(--fest-muted); font-size: 10px; line-height: 1.75; }
+.experience-card > a { position: absolute; right: 17px; bottom: 20px; width: 30px; height: 30px; display: grid; place-items: center; color: var(--fest-red); border: 1px solid #f0d7c8; border-radius: 50%; }
+.arrow-diagonal { transform: rotate(-45deg); }
+.festival-program { padding: 90px max(35px, calc((100% - 1110px) / 2)) 77px; color: white; background: #382d42; }
+.program-heading { display: flex; justify-content: space-between; align-items: end; gap: 50px; }
+.festival-kicker-light { color: #f0bd74; }
+.program-heading h2 { margin: 17px 0 0; font: 800 43px/1.03 'Manrope', 'Segoe UI', sans-serif; letter-spacing: -2.4px; }
+.program-heading h2 em { color: #f2bd6d; font-style: normal; }
+.program-heading > p { max-width: 330px; margin: 0 0 4px; color: #d3c8c8; font-size: 11px; line-height: 1.8; }
+.program-days { margin-top: 44px; border-top: 1px solid #ffffff27; }
+.program-day { min-height: 108px; display: flex; align-items: center; gap: 20px; border-bottom: 1px solid #ffffff27; }
+.day-date { width: 50px; height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #f5c46f; border: 1px solid #f5c46f80; }
+.day-date span, .day-date small { font-size: 7px; font-weight: 800; letter-spacing: 1px; }.day-date b { margin: 1px 0; color: white; font: 700 24px Georgia, serif; }
+.day-copy { flex: 1; }.day-copy > span { color: #e8ad70; font-size: 7px; font-weight: 800; letter-spacing: 1.3px; }
+.day-copy h3 { margin: 5px 0; font: 700 15px 'Manrope', 'Segoe UI', sans-serif; }.day-copy p { margin: 0; color: #c7babb; font-size: 9px; }
+.program-day > svg { width: 16px; color: #e9b46b; }
+.program-foot { padding-top: 18px; display: flex; justify-content: space-between; color: #c8babb; font-size: 8px; }
+.program-foot a { display: flex; align-items: center; gap: 6px; color: #f0c475; font-size: 9px; font-weight: 700; }
+.festival-visit { max-width: 1160px; margin: auto; padding: 115px 25px; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 84px; }
+.visit-art { position: relative; height: 340px; overflow: hidden; background: linear-gradient(180deg, #eaa15f 0%, #f8cc79 54%, #f1ab62 100%); }
+.visit-sun { position: absolute; top: 12%; left: 50%; width: 122px; height: 122px; background: #ffe6a0; border-radius: 50%; box-shadow: 0 0 45px #ffe29a91; transform: translateX(-50%); }
+.visit-horizon { position: absolute; right: 0; bottom: 0; left: 0; height: 43%; background: #a55451; clip-path: polygon(0 60%, 20% 29%, 40% 56%, 58% 17%, 76% 57%, 100% 23%, 100% 100%, 0 100%); }
+.visit-dune { position: absolute; right: -7%; bottom: -17%; left: -7%; height: 47%; background: #bd654c; border-radius: 50% 50% 0 0; }.dune-back { bottom: -25%; left: -18%; background: #e18b55; }.dune-front { right: -20%; bottom: -32%; left: 29%; background: #955050; }
+.visit-palace { position: absolute; z-index: 2; bottom: 18%; left: 50%; width: 170px; height: 112px; background: #f9ddb1; clip-path: polygon(0 100%, 0 58%, 8% 58%, 8% 31%, 14% 20%, 20% 31%, 20% 47%, 30% 47%, 30% 15%, 40% 0, 50% 15%, 50% 39%, 62% 39%, 62% 19%, 71% 7%, 80% 19%, 80% 51%, 92% 51%, 92% 35%, 100% 35%, 100% 100%); transform: translateX(-50%); }
+.visit-palace i { position: absolute; bottom: 0; width: 10px; height: 26px; background: #aa5a50; border-radius: 50% 50% 0 0; }.visit-palace i:nth-child(1) { left: 25%; }.visit-palace i:nth-child(2) { left: 43%; height: 34px; }.visit-palace i:nth-child(3) { left: 62%; }.visit-palace i:nth-child(4) { left: 79%; height: 22px; }
+.visit-palace b { position: absolute; right: 0; bottom: 0; left: 0; height: 7px; background: #e3a76a; }
+.visit-stamp { position: absolute; z-index: 3; top: 10%; right: 8%; width: 65px; height: 65px; display: grid; place-content: center; color: #fff5dc; border: 1px solid #fff3da; border-radius: 50%; font-size: 8px; font-weight: 800; letter-spacing: 1px; text-align: center; transform: rotate(11deg); }
+.visit-stamp span { margin-top: 3px; color: #ffe0a2; font-size: 10px; }
+.visit-flower { position: absolute; z-index: 4; top: 10%; left: 9%; color: #fff0bf; font-size: 34px; }
+.visit-copy h2 { margin-bottom: 16px; }
+.visit-copy > p { max-width: 410px; color: var(--fest-muted); font-size: 11px; line-height: 1.9; }
+.visit-details { margin-top: 23px; display: grid; gap: 14px; }
+.visit-details > div { display: flex; align-items: center; gap: 11px; }.visit-details svg { width: 17px; color: var(--fest-red); }
+.visit-details span { display: flex; flex-direction: column; gap: 4px; }.visit-details b { font-size: 10px; }.visit-details small { color: #8e817d; font-size: 9px; }
+.festival-pass-banner { position: relative; overflow: hidden; padding: 77px 24px 80px; color: white; background: #b7443c; text-align: center; }
+.festival-pass-banner::before, .festival-pass-banner::after { position: absolute; width: 280px; height: 280px; content: ''; border: 1px solid #fff3dd38; border-radius: 50%; }
+.festival-pass-banner::before { top: -140px; left: -95px; box-shadow: 0 0 0 22px #ffffff08, 0 0 0 44px #ffffff08; }.festival-pass-banner::after { right: -120px; bottom: -170px; box-shadow: 0 0 0 22px #ffffff08, 0 0 0 44px #ffffff08; }
+.festival-pass-banner .festival-kicker { justify-content: center; color: #ffe0ad; }.festival-pass-banner .festival-kicker > span { background: #f2c476; }
+.festival-pass-banner h2 { position: relative; z-index: 1; margin: 17px 0 13px; font: 800 43px/1.03 'Manrope', 'Segoe UI', sans-serif; letter-spacing: -2px; }.festival-pass-banner h2 em { color: #ffdb8d; }
+.festival-pass-banner > p { max-width: 390px; margin: 0 auto 21px; color: #ffe7d4; font-size: 10px; line-height: 1.8; }
+.festival-button-cream { position: relative; z-index: 1; color: #593242; background: #fff3df; }.festival-button-cream:hover { background: white; }
+.pass-flower { position: absolute; z-index: 1; color: #f5c16e; opacity: .75; }.pass-flower-left { top: 23%; left: 14%; font-size: 48px; }.pass-flower-right { right: 14%; bottom: 20%; color: #f69a7c; font-size: 58px; }
+.festival-faq { max-width: 1110px; margin: auto; padding: 110px 25px; display: grid; grid-template-columns: .75fr 1.25fr; gap: 85px; }
+.festival-faq h2 { margin-top: 17px; }.festival-faq > div:first-child > p { max-width: 270px; margin: 12px 0 0; color: var(--fest-muted); font-size: 10px; line-height: 1.8; }
+.festival-faq-list details { border-bottom: 1px solid #eadfd4; }.festival-faq-list details:first-child { border-top: 1px solid #eadfd4; }
+.festival-faq-list summary { min-height: 58px; display: flex; justify-content: space-between; align-items: center; gap: 14px; list-style: none; cursor: pointer; font-size: 10px; font-weight: 700; }
+.festival-faq-list summary::-webkit-details-marker { display: none; }.festival-faq-list summary svg { width: 15px; color: #ac5a45; transition: transform .2s; }.festival-faq-list details[open] summary svg { transform: rotate(180deg); }
+.festival-faq-list details p { margin: -2px 25px 16px 0; color: var(--fest-muted); font-size: 9px; line-height: 1.8; }
+.festival-footer { max-width: none; min-height: 86px; padding: 18px max(32px, calc((100% - 1110px) / 2)); border-top: 1px solid #ede2d7; }
+.festival-footer .festival-brand { font-size: 17px; }.festival-footer .festival-brand-mark { width: 31px; height: 31px; }
+.festival-footer > span { color: #92837d; font-size: 8px; }
+
+.sharing-page { min-height: 100vh; color: var(--fest-ink); background: var(--fest-cream); }
+.sharing-header { height: 78px; padding: 0 max(24px, calc((100% - 1120px) / 2)); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ede2d7; }
+.sharing-back { display: inline-flex; align-items: center; gap: 8px; color: #a44034; font-size: 10px; font-weight: 700; }
+.sharing-main { max-width: 600px; margin: auto; padding: 75px 24px; }
+.sharing-main h1 { margin: 17px 0; font: 800 42px/1.05 'Manrope', 'Segoe UI', sans-serif; letter-spacing: -2px; }
+.sharing-intro { margin-bottom: 24px; color: var(--fest-muted); font-size: 12px; line-height: 1.85; }
+.sharing-page .share-panel { max-width: none; border-color: #e9ddd2; box-shadow: 0 16px 45px #4930240c; }
+.sharing-safety { margin: 14px 0 0; display: flex; align-items: center; gap: 8px; color: #766b68; font-size: 9px; line-height: 1.7; }
+.sharing-safety svg { flex: 0 0 auto; color: #a44034; }
+
+@media (max-width: 900px) {
+  .festival-header { padding: 0 25px; }.festival-nav { gap: 18px; }
+  .festival-hero { min-height: 530px; padding: 20px 25px 50px; grid-template-columns: .9fr 1.1fr; }
+  .festival-hero h1 { font-size: clamp(47px, 7vw, 65px); letter-spacing: -3.8px; }.festival-hero-art { min-height: 405px; }
+  .festival-facts { margin: 0 25px; }.facts-label { display: none; }.festival-facts { padding: 17px; }
+  .festival-intro { padding-top: 100px; gap: 22px; }.festival-section-heading h2, .visit-copy h2, .festival-faq h2 { font-size: 39px; }
+  .festival-visit { gap: 45px; }.experience-card { min-height: 315px; }
+}
+@media (max-width: 640px) {
+  .festival-ribbon { min-height: 31px; gap: 6px; font-size: 7px; letter-spacing: .7px; }.festival-ribbon svg { width: 11px; }
+  .festival-header { height: 69px; padding: 0 20px; }.festival-brand { font-size: 18px; }.festival-brand-mark { width: 32px; height: 32px; }
+  .festival-menu-toggle { width: 38px; height: 38px; display: grid; place-items: center; color: #493547; background: transparent; border: 1px solid #ead9ca; border-radius: 50%; }
+  .festival-nav { position: absolute; top: 60px; right: 14px; left: 14px; padding: 14px; display: none; align-items: stretch; gap: 0; background: #fffaf1; border: 1px solid #eee0d4; box-shadow: 0 12px 30px #49302420; }
+  .festival-nav.open { display: flex; flex-direction: column; }.festival-nav > a:not(.festival-nav-cta) { padding: 13px 10px; border-bottom: 1px solid #f0e7dc; }.festival-nav .festival-nav-cta { justify-content: center; margin-top: 10px; }
+  .festival-hero { min-height: auto; padding: 42px 21px 31px; display: flex; flex-direction: column; align-items: stretch; gap: 25px; }
+  .festival-hero-copy { padding: 0; }.festival-kicker { font-size: 8px; letter-spacing: 1.35px; }
+  .festival-hero h1 { margin: 17px 0 12px; font-size: clamp(47px, 13vw, 65px); letter-spacing: -3.7px; }
+  .festival-hero-copy > p { max-width: 430px; font-size: 11px; }.festival-hero-actions { flex-wrap: wrap; gap: 13px; margin-top: 20px; }
+  .festival-button { min-height: 43px; padding: 0 13px; font-size: 9px; }.festival-play-link { font-size: 9px; }
+  .festival-hero-meta { margin-top: 20px; gap: 9px; font-size: 8px; }.festival-hero-meta svg { width: 14px; }
+  .festival-hero-art { min-height: 330px; margin: 0 7px; border-radius: 49% 49% 5px 5px; }
+  .art-stage { bottom: 14%; }.art-caption { bottom: 6%; }.hero-edge-label { display: none; }
+  .festival-facts { margin: 0 15px; padding: 16px 13px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px 9px; }
+  .festival-facts > div { gap: 7px; font-size: 8px; }.festival-facts > div > svg { width: 15px; }.festival-facts > a { font-size: 8px; }
+  .festival-intro { padding: 77px 22px 28px; display: block; }.intro-side-note { display: none; }.festival-section-heading h2, .visit-copy h2, .festival-faq h2 { font-size: 38px; }
+  .festival-intro-copy { margin-top: 17px; }.festival-intro-copy > p { font-size: 10px; }
+  .festival-experiences { padding: 18px 20px 74px; grid-template-columns: 1fr; gap: 12px; }
+  .experience-card { min-height: 295px; padding: 15px; }.experience-illustration { height: 137px; margin-right: -15px; margin-left: -15px; }
+  .experience-card h3 { font-size: 17px; }.experience-card p { font-size: 9px; }
+  .festival-program { padding: 65px 22px 56px; }.program-heading { display: block; }.program-heading h2 { font-size: 37px; }.program-heading > p { margin-top: 16px; font-size: 10px; }
+  .program-days { margin-top: 27px; }.program-day { min-height: 95px; gap: 13px; }.day-date { width: 44px; height: 54px; flex: 0 0 auto; }.day-copy h3 { font-size: 12px; }.day-copy p { max-width: 235px; font-size: 8px; line-height: 1.6; }
+  .program-foot { gap: 14px; font-size: 7px; }.program-foot a { white-space: nowrap; font-size: 8px; }
+  .festival-visit { padding: 72px 21px; grid-template-columns: 1fr; gap: 30px; }.visit-art { height: 265px; }.visit-copy h2 { margin-bottom: 13px; }.visit-copy > p { font-size: 10px; }
+  .festival-pass-banner { padding: 62px 22px; }.festival-pass-banner h2 { font-size: 36px; }.festival-pass-banner > p { font-size: 9px; }.pass-flower-left { left: 4%; font-size: 34px; }.pass-flower-right { right: 4%; font-size: 42px; }
+  .festival-faq { padding: 73px 22px; grid-template-columns: 1fr; gap: 25px; }.festival-faq > div:first-child > p { font-size: 9px; }
+  .festival-faq-list summary { min-height: 55px; font-size: 9px; }.festival-faq-list details p { font-size: 8px; }
+  .festival-footer { padding: 17px 20px; flex-wrap: wrap; gap: 10px; }.festival-footer .footer-note { display: none; }.festival-footer > span:last-child { font-size: 7px; }
+  .sharing-main { padding-top: 50px; }.sharing-main h1 { font-size: 34px; }.sharing-header { padding: 0 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .festival-page *, .sharing-page * { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+@keyframes festival-reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes festival-art-arrive {
+  from { opacity: 0; transform: translateY(14px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes festival-lantern {
+  from { opacity: .65; box-shadow: 0 0 10px 3px #ffe4a35e; }
+  to { opacity: 1; box-shadow: 0 0 19px 7px #ffe4a3aa; }
+}

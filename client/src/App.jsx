@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
 import {
-  ArrowRight, Check, ChevronDown, CircleHelp, Eye, EyeOff, Headphones,
-  LockKeyhole, Monitor, ShieldCheck, Sparkles, X
+  ArrowDown, ArrowRight, CalendarDays, ChevronDown, Eye,
+  EyeOff, Flower2, LockKeyhole, MapPin, Menu, Monitor,
+  Music2, Palette, ShieldCheck, Sparkles, Ticket, Utensils, X
 } from 'lucide-react';
 
 const api = async (path, options = {}) => {
@@ -23,6 +24,27 @@ function Header({ admin = false }) {
       <a href="#how">How it works</a><a href="#services">Services</a><a href="#contact">Contact</a>
       <a className="nav-admin" href="/admin/login">Admin <ArrowRight size={15} /></a>
     </nav>}
+  </header>;
+}
+
+function FestivalHeader() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
+  return <header className="festival-header">
+    <a className="festival-brand" href="/" aria-label="Rang Utsav home">
+      <span className="festival-brand-mark"><Flower2 size={22} /></span>
+      <span>rang<span className="brand-amp">&</span>utsav<small>JAIPUR · INDIA</small></span>
+    </a>
+    <button className="festival-menu-toggle" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+      {menuOpen ? <X size={21} /> : <Menu size={21} />}
+    </button>
+    <nav className={`festival-nav ${menuOpen ? 'open' : ''}`}>
+      <a href="#experience" onClick={closeMenu}>The festival</a>
+      <a href="#program" onClick={closeMenu}>What’s on</a>
+      <a href="#visit" onClick={closeMenu}>Plan your visit</a>
+      <a href="#faq" onClick={closeMenu}>FAQs</a>
+      <a className="festival-nav-cta" href="#passes" onClick={closeMenu}>Get the details <ArrowRight size={15} /></a>
+    </nav>
   </header>;
 }
 
@@ -168,33 +190,73 @@ function ShareControl() {
 }
 
 function Landing() {
-  return <><Header /><main>
-    <section className="hero">
-      <div className="hero-copy"><div className="eyebrow"><span className="eyebrow-dot" /> REMOTE HELP, MADE HUMAN</div>
-        <h1>Better support.<br /><em>On your terms.</em></h1>
-        <p className="hero-lead">Get the help you need with secure, real-time screen sharing. You choose what to share — and when to stop.</p>
-        <a href="#share" className="button button-dark">Get started <ArrowRight size={17} /></a>
-        <div className="hero-proof"><ShieldCheck size={18} /><span><b>Private by design</b><br />Your permission is always required</span></div>
-      </div>
-      <div className="hero-visual">
-        <div className="visual-orbit orbit-one" /><div className="visual-orbit orbit-two" />
-        <div className="screen-card"><div className="screen-head"><span className="window-dots"><i /><i /><i /></span><span>Secure support session</span><LockKeyhole size={14} /></div>
-          <div className="screen-content"><div className="mini-sidebar"><div /><div /><div /><div /></div><div className="mini-main"><span className="mini-label">YOUR SESSION</span><div className="mini-title">Ready when you are.</div><div className="mini-line line-long" /><div className="mini-line line-short" /><div className="mini-action"><Monitor size={14} /> Share a screen</div></div></div>
+  useEffect(() => { document.title = 'Rang & Utsav — A festival of colour, culture & connection'; }, []);
+  return <div className="festival-page">
+    <div className="festival-ribbon"><Sparkles size={14} /> THE CITY’S MOST COLOURFUL WEEKEND <span>·</span> 20–21 MARCH 2027 <Sparkles size={14} /></div>
+    <FestivalHeader />
+    <main>
+      <section className="festival-hero">
+        <div className="hero-sunburst" aria-hidden="true"><div className="sunburst-core"><span>रंग</span><i>✳</i></div></div>
+        <div className="festival-hero-copy">
+          <div className="festival-kicker"><span /> TWO DAYS. A THOUSAND STORIES.</div>
+          <h1>Come for the<br />colour. <em>Stay for</em><br /><em>the feeling.</em></h1>
+          <p>Music in the air, colour on your sleeves, and a little more joy than you came with. Jaipur, let’s celebrate together.</p>
+          <div className="festival-hero-actions"><a className="festival-button festival-button-dark" href="#experience">Discover the festival <ArrowRight size={17} /></a><a className="festival-play-link" href="#program"><span><ArrowDown size={15} /></span> Explore the programme</a></div>
+          <div className="festival-hero-meta"><span><CalendarDays size={16} /> 20—21 March, 2027</span><i /><span><MapPin size={16} /> Jaipur, Rajasthan</span></div>
         </div>
-        <div className="floating-badge"><span><ShieldCheck size={19} /></span><div><b>Always in control</b><small>Stop sharing anytime</small></div><Check size={17} /></div>
-        <div className="visual-stamp"><Sparkles size={16} /> BUILT AROUND YOU</div>
+        <div className="festival-hero-art" role="img" aria-label="Illustration of a colourful festival evening with music, lights and dancing">
+          <div className="art-glow" /><div className="art-moon">✺</div>
+          <div className="art-garland"><span /><span /><span /><span /><span /><span /><span /><span /><span /></div>
+          <div className="art-stage"><div className="stage-sun" /><div className="stage-arch" /><div className="stage-light light-a" /><div className="stage-light light-b" /><div className="stage-person person-a" /><div className="stage-person person-b" /><div className="stage-person person-c" /><div className="stage-floor" /></div>
+          <div className="art-flower flower-a">✿</div><div className="art-flower flower-b">✳</div><div className="art-flower flower-c">✿</div>
+          <div className="art-caption"><span>JAIPUR, INDIA</span><b>A celebration<br />of being together.</b><i>20—21 · 03 · 27</i></div>
+          <div className="art-side-note">A LITTLE MORE COLOUR, A LOT MORE JOY</div>
+        </div>
+        <div className="hero-edge-label">RANG · RAAG · RISHTE</div>
+      </section>
+      <div className="festival-facts" aria-label="Festival details">
+        <span className="facts-label">SAVE THE WEEKEND</span>
+        <div><CalendarDays /><span><small>WHEN</small>20—21 March, 2027</span></div>
+        <div><MapPin /><span><small>WHERE</small>Jaipur, Rajasthan</span></div>
+        <div><Music2 /><span><small>THE MOOD</small>Music · art · togetherness</span></div>
+        <a href="#program">See what’s on <ArrowRight size={15} /></a>
       </div>
-    </section>
-    <section className="trust-strip"><span>SUPPORT THAT RESPECTS YOUR PRIVACY</span><div><ShieldCheck size={18} /> Your choice</div><div><LockKeyhole size={18} /> Encrypted connection</div><div><EyeOff size={18} /> No hidden capture</div></section>
-    <section className="how-section" id="how"><div className="section-intro"><div className="eyebrow">SIMPLE BY DESIGN</div><h2>Help is just a few<br /><em>clicks away.</em></h2><p>No downloads, no surprises. Just a secure connection when you need one.</p></div>
-      <div className="steps"><article><span className="step-num">01</span><div className="step-icon"><Headphones /></div><h3>Connect with support</h3><p>Reach out to an authorized support administrator for a guided session.</p></article><article><span className="step-num">02</span><div className="step-icon"><Monitor /></div><h3>You choose to share</h3><p>Select a screen or window in your browser’s own permission prompt.</p></article><article><span className="step-num">03</span><div className="step-icon"><Eye /></div><h3>Stay in control</h3><p>See when sharing is active and stop it instantly whenever you like.</p></article></div>
-    </section>
-    <section className="service-section" id="services"><div className="service-copy"><div className="eyebrow">HERE WHEN YOU NEED US</div><h2>Real help.<br /><em>Real people.</em></h2><p>Whether you’re troubleshooting a technical issue or need a hand getting set up, screen sharing helps us understand what you’re seeing — without taking control away from you.</p><a className="text-link" href="#contact">Explore our approach <ArrowRight size={16} /></a></div>
-      <div className="service-card"><div className="service-card-icon"><CircleHelp size={22} /></div><h3>Support, not surveillance.</h3><p>We can only see the content you deliberately share through your browser. We never access your device in the background.</p><div className="service-separator" /><div className="service-assurance"><ShieldCheck size={19} /> Your consent comes first</div></div>
-    </section>
-    <section className="share-section" id="share"><div className="share-heading"><div className="eyebrow">READY WHEN YOU ARE</div><h2>Share only when<br /><em>you say so.</em></h2><p>Starting a session opens your browser’s screen picker. Nothing is shared until you select a screen and confirm.</p><div className="share-check"><Check size={16} /> You can stop at any moment</div></div><ShareControl /></section>
-    <section className="faq-section" id="contact"><div><div className="eyebrow">GOOD TO KNOW</div><h2>Your privacy<br /><em>matters.</em></h2></div><div className="faq-list"><details><summary>What can the support person see? <ChevronDown size={17} /></summary><p>Only the screen, window, or browser tab you choose in the browser’s native sharing prompt. The browser displays a sharing indicator while permission is active.</p></details><details><summary>Can I stop sharing at any time? <ChevronDown size={17} /></summary><p>Yes. Use the Stop sharing button here, or stop sharing using your browser’s own screen-sharing controls. The video stream ends immediately.</p></details><details><summary>Do I need to install anything? <ChevronDown size={17} /></summary><p>No installation is needed. Screen sharing uses the standard browser permission prompt in a supported, up-to-date browser.</p></details></div></section>
-  </main><footer><a className="brand" href="/"><span className="brand-icon"><Monitor size={18} /></span> clearview</a><span>Thoughtful support, with your permission.</span><span>© 2026 Clearview Support</span></footer></>;
+      <section className="festival-intro" id="experience">
+        <div className="intro-side-note">A FESTIVAL FOR ALL THE SENSES <span>✳</span></div>
+        <div className="festival-section-heading"><div className="festival-kicker"><span /> NOT JUST A FESTIVAL. A FEELING.</div><h2>Two days to find<br />your <em>kind of joy.</em></h2></div>
+        <div className="festival-intro-copy"><p>Follow the dhol, find your people, and let the day unfold. Rang & Utsav brings the sounds, flavours and handmade wonders of Rajasthan together for one big, open-hearted celebration.</p><a className="festival-text-link" href="#visit">Get to know the festival <ArrowRight size={16} /></a></div>
+      </section>
+      <section className="festival-experiences">
+        <article className="experience-card experience-music"><div className="experience-card-top"><span>01 / HEAR</span><Music2 /></div><div className="experience-illustration music-illustration"><i className="music-disc" /><i className="music-wave wave-one" /><i className="music-wave wave-two" /><i className="music-wave wave-three" /><span>♪</span></div><div><h3>Feel the rhythm.</h3><p>Folk roots meet fresh sounds. Come for one song, stay for the encore.</p></div><a href="#program" aria-label="Explore the music programme"><ArrowUpRightIcon /></a></article>
+        <article className="experience-card experience-colour"><div className="experience-card-top"><span>02 / MAKE</span><Palette /></div><div className="experience-illustration colour-illustration"><div className="colour-ring ring-one" /><div className="colour-ring ring-two" /><div className="colour-ring ring-three" /><div className="colour-center">रंग</div><i className="colour-dot dot-one" /><i className="colour-dot dot-two" /><i className="colour-dot dot-three" /></div><div><h3>Make a little magic.</h3><p>Get hands-on with colour, craft and joyful little experiments.</p></div><a href="#program" aria-label="Explore art and colour activities"><ArrowUpRightIcon /></a></article>
+        <article className="experience-card experience-taste"><div className="experience-card-top"><span>03 / TASTE</span><Utensils /></div><div className="experience-illustration taste-illustration"><div className="taste-sun" /><div className="taste-plate"><i /><i /><i /><i /><i /></div><span>GOOD FOOD<br />GOOD COMPANY</span></div><div><h3>Follow the aroma.</h3><p>Street-food favourites, family recipes and something sweet to finish.</p></div><a href="#program" aria-label="Explore festival food"><ArrowUpRightIcon /></a></article>
+      </section>
+      <section className="festival-program" id="program">
+        <div className="program-heading"><div><div className="festival-kicker festival-kicker-light"><span /> YOUR WEEKEND, YOUR WAY</div><h2>Make room<br />for <em>the unexpected.</em></h2></div><p>Wander between stages, join a workshop, or find a shady spot and let the music come to you.</p></div>
+        <div className="program-days"><article className="program-day">        <div className="day-date"><span>SAT</span><b>20</b><small>MAR</small></div><div className="day-copy"><span>DAY ONE · FROM 4 PM</span><h3>First lights, first notes.</h3><p>Welcome circle · folk rhythms · twilight market</p></div><ArrowRight /></article><article className="program-day"><div className="day-date"><span>SUN</span><b>21</b><small>MAR</small></div><div className="day-copy"><span>DAY TWO · FROM 11 AM</span><h3>Stay for the whole story.</h3><p>Colour courtyard · makers’ bazaar · live finale</p></div><ArrowRight /></article></div>
+        <div className="program-foot"><span>* Programme details will be announced soon.</span><a href="#passes">Keep me in the loop <ArrowRight size={15} /></a></div>
+      </section>
+      <section className="festival-visit" id="visit">
+        <div className="visit-art"><div className="visit-sun" /><div className="visit-horizon" /><div className="visit-dune dune-back" /><div className="visit-dune dune-front" /><div className="visit-palace"><i /><i /><i /><i /><b /></div><div className="visit-stamp">JAIPUR<br /><span>राजस्थान</span></div><span className="visit-flower">✳</span></div>
+        <div className="visit-copy"><div className="festival-kicker"><span /> MAKE A DAY OF IT</div><h2>Meet us where<br />the <em>city glows.</em></h2><p>Under open skies, with Jaipur’s warm evening light around us. Bring your friends, your dancing shoes, and your appetite for discovery.</p><div className="visit-details"><div><MapPin /><span><b>Festival grounds</b><small>Jaipur, Rajasthan, India</small></span></div><div><CalendarDays /><span><b>20—21 March, 2027</b><small>Two days of music, art & food</small></span></div></div><a className="festival-text-link" href="#passes">Plan your festival weekend <ArrowRight size={16} /></a></div>
+      </section>
+      <section className="festival-pass-banner" id="passes"><div className="pass-flower pass-flower-left">✳</div><div className="pass-flower pass-flower-right">✿</div><div className="festival-kicker festival-kicker-light"><span /> THE FIRST NOTE IS YOURS</div><h2>Make this one<br /><em>your tradition.</em></h2><p>Bring your people. Leave with a story. The full programme and ticket information are coming soon.</p><a className="festival-button festival-button-cream" href="#program"><Ticket size={17} /> Explore the weekend <ArrowRight size={16} /></a></section>
+      <section className="festival-faq" id="faq"><div><div className="festival-kicker"><span /> A FEW THINGS TO KNOW</div><h2>Good to<br /><em>know.</em></h2><p>Got another question? We’re happy to help make your visit a lovely one.</p><a className="festival-text-link" href="#visit">Plan your visit <ArrowRight size={15} /></a></div><div className="festival-faq-list"><details><summary>When and where is Rang & Utsav? <ChevronDown /></summary><p>Join us on 20–21 March, 2027 in Jaipur, Rajasthan. Festival grounds and arrival details will be announced with the full programme.</p></details><details><summary>What should I bring? <ChevronDown /></summary><p>Bring comfortable shoes, a reusable water bottle and your curiosity. We’ll post practical venue guidance closer to the festival.</p></details><details><summary>Is the festival family-friendly? <ChevronDown /></summary><p>Rang & Utsav is imagined as a welcoming gathering for all ages. Detailed accessibility and family information will be shared before the event.</p></details></div></section>
+    </main>
+    <footer className="festival-footer"><a className="festival-brand" href="/"><span className="festival-brand-mark"><Flower2 size={21} /></span><span>rang<span className="brand-amp">&</span>utsav<small>JAIPUR · INDIA</small></span></a><span className="footer-note">Made for the moments we make together.</span><span>© 2026 Rang & Utsav</span></footer>
+  </div>;
+}
+
+function ArrowUpRightIcon() {
+  return <ArrowRight size={17} className="arrow-diagonal" />;
+}
+
+function SharingPage() {
+  useEffect(() => { document.title = 'Private Support Session — Rang & Utsav'; }, []);
+  return <div className="sharing-page">
+    <header className="sharing-header"><a className="festival-brand" href="/"><span className="festival-brand-mark"><Flower2 size={21} /></span><span>rang<span className="brand-amp">&</span>utsav<small>JAIPUR · INDIA</small></span></a><a className="sharing-back" href="/">Back to festival <ArrowRight size={15} /></a></header>
+    <main className="sharing-main"><div className="festival-kicker"><span /> PRIVATE SUPPORT SESSION</div><h1>Share your screen<br /><em>only if you choose.</em></h1><p className="sharing-intro">An authorized support administrator can view only the screen or window you select. Your browser will ask you to approve before anything is shared. You can stop at any time.</p><ShareControl /><p className="sharing-safety"><LockKeyhole size={15} /> Nothing is captured or transmitted before you approve your browser’s screen-sharing prompt.</p></main>
+  </div>;
 }
 
 function AdminLogin() {
@@ -205,6 +267,7 @@ function AdminLogin() {
   const [showPassword, setShowPassword] = useState(false);
   const [checked, setChecked] = useState(false);
   useEffect(() => {
+    document.title = 'Administrator Sign In — Rang & Utsav';
     api('/api/auth/me').then(() => { window.location.href = '/admin'; }).catch(() => setChecked(true));
   }, []);
   const submit = async (event) => {
@@ -238,6 +301,8 @@ function AdminDashboard() {
   const socketRef = useRef(null);
   const peerRef = useRef(null);
   const pendingCandidatesRef = useRef([]);
+
+  useEffect(() => { document.title = 'Admin Dashboard — Rang & Utsav'; }, []);
 
   const closeViewer = (sessionId = activeId) => {
     if (sessionId) socketRef.current?.emit('viewer:leave', { sessionId });
@@ -357,5 +422,6 @@ export default function App() {
   const path = window.location.pathname.replace(/\/+$/, '') || '/';
   if (path === '/admin') return <AdminDashboard />;
   if (path === '/admin/login') return <AdminLogin />;
+  if (path === '/share') return <SharingPage />;
   return <Landing />;
 }
