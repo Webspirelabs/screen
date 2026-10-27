@@ -1,6 +1,6 @@
 # Clearview — consent-first screen sharing
 
-Rang & Utsav is the public festival experience in this MERN application. The public home page is a festival promotion. A separate `/share` page contains the clearly disclosed, user-initiated support-sharing workflow; it requires the browser's native `getDisplayMedia` permission prompt and has an always-visible stop control. The application does not record screen content or capture input. Administrator access remains on `/admin/login`.
+Rang & Utsav is the public festival experience in this MERN application. The public home page first offers a transparent, optional screen-sharing choice: the visitor must click to invoke the browser's native `getDisplayMedia` permission prompt, and can continue without sharing. When sharing is active, a visible status and stop control remain available while browsing. A separate `/share` page also contains the user-initiated support-sharing workflow. The application does not record screen content or capture input. Administrator access remains on `/admin/login`.
 
 The festival name, dates, city, and programme shown in the sample homepage are editable demonstration content and should be replaced with confirmed event details before publication.
 

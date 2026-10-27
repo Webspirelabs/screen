@@ -31,7 +31,7 @@ function FestivalHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
   return <header className="festival-header">
-    <a className="festival-brand" href="/" aria-label="Rang Utsav home">
+    <a className="festival-brand" href="#top" aria-label="Rang Utsav home">
       <span className="festival-brand-mark"><Flower2 size={22} /></span>
       <span>rang<span className="brand-amp">&</span>utsav<small>JAIPUR · INDIA</small></span>
     </a>
@@ -48,7 +48,7 @@ function FestivalHeader() {
   </header>;
 }
 
-function ShareControl() {
+function ShareControl({ onStateChange, onContinue }) {
   const [state, setState] = useState('idle');
   const [message, setMessage] = useState('');
   const socketRef = useRef(null);
@@ -57,6 +57,8 @@ function ShareControl() {
   const sessionRef = useRef(null);
   const pendingSignalsRef = useRef([]);
   const pendingCandidatesRef = useRef([]);
+
+  useEffect(() => { onStateChange?.(state); }, [onStateChange, state]);
 
   const handleSignal = async (signal, socket) => {
     if (signal.sessionId !== sessionRef.current) return;
@@ -180,18 +182,51 @@ function ShareControl() {
     <h3>{state === 'sharing' ? 'Your screen is being shared' : 'Start a secure sharing session'}</h3>
     <p>{state === 'sharing'
       ? 'An authorized support administrator can now view the screen you selected. You can stop sharing at any time.'
-      : 'Choose what to share in your browser’s permission dialog. You remain in control throughout the session.'}</p>
+      : 'An authorized support administrator will be able to view the screen or window you select. Your browser will ask you first, and you remain in control throughout the session.'}</p>
     {state !== 'sharing' ? <button className="button button-dark full" onClick={start} disabled={state === 'requesting'}>
       {state === 'requesting' ? 'Waiting for browser permission…' : 'Choose a screen to share'} <ArrowRight size={16} />
     </button> : <button className="button button-stop full" onClick={() => stop()}>Stop sharing <X size={16} /></button>}
+    {onContinue && <button type="button" className="entry-continue-button" onClick={onContinue}>Continue to festival <ArrowRight size={16} /></button>}
     {message && <div className="inline-message" role="status">{message}</div>}
     <div className="privacy-note"><LockKeyhole size={15} /> Nothing is captured or transmitted without browser permission.</div>
   </div>;
 }
 
+function PublicEntry() {
+  const [entered, setEntered] = useState(false);
+  const [shareState, setShareState] = useState('idle');
+  const enterFestival = () => setEntered(true);
+
+  useEffect(() => {
+    if (!entered) document.title = 'Before You Enter — Rang & Utsav';
+  }, [entered]);
+
+  return <div className={`entry-page ${entered ? 'is-entered' : ''}`}>
+    {!entered && <>
+      <header className="entry-header">
+        <a className="festival-brand" href="/" aria-label="Rang Utsav">
+          <span className="festival-brand-mark"><Flower2 size={22} /></span>
+          <span>rang<span className="brand-amp">&</span>utsav<small>JAIPUR · INDIA</small></span>
+        </a>
+      </header>
+      <main className="entry-main">
+        <div className="festival-kicker"><span /> BEFORE YOU ENTER</div>
+        <h1>One quick choice<br /><em>is yours to make.</em></h1>
+        <p>This site offers optional screen sharing for people receiving support. If you choose it, an authorized support administrator can view the screen or window you select, live. Your browser will show its own permission prompt first.</p>
+        <p className="entry-choice-note">Sharing is optional. You can continue to the festival without sharing anything.</p>
+      </main>
+    </>}
+    <div className={`entry-share-shell ${entered ? (shareState === 'sharing' ? 'is-docked' : 'is-hidden') : ''}`}>
+      <ShareControl onStateChange={setShareState} onContinue={entered ? undefined : enterFestival} />
+    </div>
+    {!entered && <p className="entry-footer-note">Only share a screen or window you are comfortable showing. You can stop sharing at any time.</p>}
+    {entered && <Landing />}
+  </div>;
+}
+
 function Landing() {
   useEffect(() => { document.title = 'Rang & Utsav — A festival of colour, culture & connection'; }, []);
-  return <div className="festival-page">
+  return <div className="festival-page" id="top">
     <div className="festival-ribbon"><Sparkles size={14} /> THE CITY’S MOST COLOURFUL WEEKEND <span>·</span> 20–21 MARCH 2027 <Sparkles size={14} /></div>
     <FestivalHeader />
     <main>
@@ -243,7 +278,7 @@ function Landing() {
       <section className="festival-pass-banner" id="passes"><div className="pass-flower pass-flower-left">✳</div><div className="pass-flower pass-flower-right">✿</div><div className="festival-kicker festival-kicker-light"><span /> THE FIRST NOTE IS YOURS</div><h2>Make this one<br /><em>your tradition.</em></h2><p>Bring your people. Leave with a story. The full programme and ticket information are coming soon.</p><a className="festival-button festival-button-cream" href="#program"><Ticket size={17} /> Explore the weekend <ArrowRight size={16} /></a></section>
       <section className="festival-faq" id="faq"><div><div className="festival-kicker"><span /> A FEW THINGS TO KNOW</div><h2>Good to<br /><em>know.</em></h2><p>Got another question? We’re happy to help make your visit a lovely one.</p><a className="festival-text-link" href="#visit">Plan your visit <ArrowRight size={15} /></a></div><div className="festival-faq-list"><details><summary>When and where is Rang & Utsav? <ChevronDown /></summary><p>Join us on 20–21 March, 2027 in Jaipur, Rajasthan. Festival grounds and arrival details will be announced with the full programme.</p></details><details><summary>What should I bring? <ChevronDown /></summary><p>Bring comfortable shoes, a reusable water bottle and your curiosity. We’ll post practical venue guidance closer to the festival.</p></details><details><summary>Is the festival family-friendly? <ChevronDown /></summary><p>Rang & Utsav is imagined as a welcoming gathering for all ages. Detailed accessibility and family information will be shared before the event.</p></details></div></section>
     </main>
-    <footer className="festival-footer"><a className="festival-brand" href="/"><span className="festival-brand-mark"><Flower2 size={21} /></span><span>rang<span className="brand-amp">&</span>utsav<small>JAIPUR · INDIA</small></span></a><span className="footer-note">Made for the moments we make together.</span><span>© 2026 Rang & Utsav</span></footer>
+    <footer className="festival-footer"><a className="festival-brand" href="#top"><span className="festival-brand-mark"><Flower2 size={21} /></span><span>rang<span className="brand-amp">&</span>utsav<small>JAIPUR · INDIA</small></span></a><span className="footer-note">Made for the moments we make together.</span><span>© 2026 Rang & Utsav</span></footer>
   </div>;
 }
 
@@ -423,5 +458,5 @@ export default function App() {
   if (path === '/admin') return <AdminDashboard />;
   if (path === '/admin/login') return <AdminLogin />;
   if (path === '/share') return <SharingPage />;
-  return <Landing />;
+  return <PublicEntry />;
 }
