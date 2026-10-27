@@ -35,7 +35,7 @@ npm ci
 npm run build
 ```
 
-The Vite production bundle is generated in `client/dist`. Run the API/signaling service with `npm start` from the project root (or `npm run start -w server`). Put a reverse proxy in front of it and serve the frontend and API on the same HTTPS origin. A sample Nginx configuration is in `deploy/nginx.conf.example`.
+The Vite production bundle is generated in `client/dist`. Run the API/signaling service with `npm start` from the project root (or `npm run start -w server`). Put a reverse proxy in front of it and serve the frontend and API on the same HTTPS origin. A sample Nginx configuration is in `deploy/nginx.conf.example`. When the frontend and backend are deployed on separate hosts, set `VITE_SERVER_URL` in the frontend's build environment to the backend origin (for example, `https://api.your-domain.example`), then rebuild and redeploy the frontend. The backend's `CLIENT_ORIGIN` must exactly match the frontend origin, and the frontend/backend should use the same site domain for the secure admin cookie.
 
 ### VPS deployment checklist
 
@@ -55,6 +55,7 @@ The Vite production bundle is generated in `client/dist`. Run the API/signaling 
 - The admin dashboard and APIs are protected on the server. Socket signaling checks the administrator token and binds messages to the active session owner and its authorized viewer.
 - Audio capture is disabled. No screen data is recorded or persisted. An administrator may end an active session; this tells the sharing browser to stop its capture tracks.
 - Use HTTPS in production; browsers restrict screen capture to secure contexts. Set an exact `CLIENT_ORIGIN`, not a wildcard.
+- If deployed on separate frontend/backend hosts, set the frontend build variable `VITE_SERVER_URL` to the backend's HTTPS origin and rebuild. Verify the backend allows the exact frontend origin through `CLIENT_ORIGIN`; for Nginx same-origin deployments leave `VITE_SERVER_URL` unset and proxy both `/api/` and `/socket.io/`.
 - To test from a phone, use an HTTPS development/preview URL and a mobile browser that implements `getDisplayMedia`. A plain `http://192.168.x.x:5173` LAN address is not a secure context, and many mobile browsers do not support screen capture; the UI reports this instead of silently failing. In development, the signaling server permits the machine's private LAN IPv4 origins on the configured Vite port. Production remains restricted to the exact `CLIENT_ORIGIN`.
 
 ## Scripts

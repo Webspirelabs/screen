@@ -6,8 +6,10 @@ import {
   Music2, Palette, ShieldCheck, Sparkles, Ticket, Utensils, X
 } from 'lucide-react';
 
+const serverUrl = import.meta.env.VITE_SERVER_URL?.replace(/\/+$/, '') || undefined;
+
 const api = async (path, options = {}) => {
-  const response = await fetch(path, {
+  const response = await fetch(`${serverUrl || ''}${path}`, {
     credentials: 'include',
     headers: { 'Content-Type': 'application/json', ...options.headers },
     ...options
@@ -129,7 +131,7 @@ function ShareControl({ onStateChange, onContinue }) {
       return;
     }
 
-    const socket = io({ withCredentials: true, auth: { role: 'sharer' } });
+    const socket = io(serverUrl, { withCredentials: true, auth: { role: 'sharer' } });
     socketRef.current = socket;
     socket.on('rtc:signal', (signal) => {
       handleSignal(signal, socket).catch(() => {
@@ -358,7 +360,7 @@ function AdminDashboard() {
     }).then((data) => {
       if (!alive || !data) return;
       setSessions(data.sessions);
-      const socket = io({ withCredentials: true, auth: { role: 'admin' } });
+      const socket = io(serverUrl, { withCredentials: true, auth: { role: 'admin' } });
       socketRef.current = socket;
       socket.on('session:updated', (session) => setSessions((old) => [session, ...old.filter((s) => s.id !== session.id)]));
       socket.on('session:ended', ({ sessionId, reason }) => {
