@@ -35,7 +35,7 @@ npm ci
 npm run build
 ```
 
-The Vite production bundle is generated in `client/dist`. Run the API/signaling service with `npm start` from the project root (or `npm run start -w server`). Put a reverse proxy in front of it and serve the frontend and API on the same HTTPS origin. A sample Nginx configuration is in `deploy/nginx.conf.example`. When the frontend and backend are deployed on separate hosts, set `VITE_SERVER_URL` in the frontend's build environment to the backend origin (for example, `https://api.your-domain.example`), then rebuild and redeploy the frontend. The backend's `CLIENT_ORIGIN` must exactly match the frontend origin, and the frontend/backend should use the same site domain for the secure admin cookie.
+The Vite production bundle is generated in `client/dist`. Run the API/signaling service with `npm start` from the project root (or `npm run start -w server`). Put a reverse proxy in front of it and serve the frontend and API on the same HTTPS origin. A sample Nginx configuration is in `deploy/nginx.conf.example`. When the frontend and backend are deployed on separate hosts, set `VITE_SERVER_URL` in the frontend's build environment to the backend origin (for example, `https://api.your-domain.example`), then rebuild and redeploy the frontend. The backend's `CLIENT_ORIGIN` must exactly match the frontend origin. The secure admin cookie also requires the frontend and backend to be same-site; use custom domains under the same registrable domain for split-host deployments.
 
 ### VPS deployment checklist
 
